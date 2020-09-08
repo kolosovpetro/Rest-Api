@@ -1,0 +1,33 @@
+version: '3.4'
+
+networks:
+  sqlserverdockerapi-dev:
+    driver: bridge 
+
+services:
+  sqlserverdockerapi:
+    image: sqlserverdockerapi:latest
+    depends_on:
+      - "sqlserver_image"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"     
+    environment:
+      DB_CONNECTION_STRING: "Server=sqlserver_image;Database=RentalCodeFirst;User Id=sa;Password=yrnn9&kDt-;"
+    networks:
+      - sqlserverdockerapi-dev  
+  
+  sqlserver_image:
+    image: mcr.microsoft.com/mssql/server:2017-CU8-ubuntu
+    environment:
+      SA_PASSWORD: "yrnn9&kDt-"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "5000:1433"
+    networks:
+      - sqlserverdockerapi-dev
+         
+    
+     

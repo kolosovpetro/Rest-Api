@@ -1,0 +1,3 @@
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=yrnn9&kDt-' -p 5000:1433 --name sqlserverimage -d mcr.microsoft.com/mssql/server:2017-CU8-ubuntu
+docker build -t movies --build-arg CONN_STR="Server=10.160.2.43,5000;Database=RentalCodeFirst;User Id=sa;Password=yrnn9&kDt-;" .
+docker run -d -p 9000:80 --name sqlserverdockerapi -e ConnectionStrings__DB_CONNECTION_STRING="Server=10.160.2.43,5000;Database=RentalCodeFirst;User Id=sa;Password=yrnn9&kDt-;" movies 
