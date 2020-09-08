@@ -11,10 +11,16 @@
     <ItemGroup>
       <PackageReference Include="AutoMapper" Version="10.0.0" />
       <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+      <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="5.0.0-preview.8.20414.8" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.5" />
+      <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+      <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Api.Data\Api.Data.csproj" />
       <ProjectReference Include="..\Api.Models\Api.Models.csproj" />
+      <ProjectReference Include="..\Api.Services\Api.Services.csproj" />
     </ItemGroup>
 
 

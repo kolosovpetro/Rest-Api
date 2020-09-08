@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Api.Data.Context
 {
-    public class RentalContextPostgreSql : DbContext
+    public sealed class RentalContextPostgreSql : DbContext
     {
         public DbSet<Movies> Movies { get; set; }
         public DbSet<Copies> Copies { get; set; }
@@ -13,10 +13,20 @@ namespace Api.Data.Context
         public DbSet<Rentals> Rentals { get; set; }
         public DbSet<Employees> Employees { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public RentalContextPostgreSql(DbContextOptions<RentalContextPostgreSql> options) : base(options)
         {
-            optionsBuilder.UseNpgsql("Server=localhost;User Id=postgres;Password=postgres;Database=RentalCodeFirst;");
+            Database.EnsureCreated();
         }
+
+        public RentalContextPostgreSql()
+        {
+        }
+
+        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        // {
+        //     optionsBuilder.UseNpgsql(
+        //         "Server=localhost;User Id=postgres;Password=postgres;Database=RentalCodeFirst;");
+        // }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

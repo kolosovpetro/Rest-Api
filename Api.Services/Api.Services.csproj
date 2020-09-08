@@ -4,4 +4,16 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="Services" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Api.Repositories\Api.Repositories.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="10.0.0" />
+    </ItemGroup>
+
 </Project>

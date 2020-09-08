@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Api.Data.Context
 {
-    public class RentalContextSqlServer : DbContext
+    public sealed class RentalContextSqlServer : DbContext
     {
         public DbSet<Movies> Movies { get; set; }
         public DbSet<Copies> Copies { get; set; }
@@ -13,9 +13,20 @@ namespace Api.Data.Context
         public DbSet<Rentals> Rentals { get; set; }
         public DbSet<Employees> Employees { get; set; }
 
+        public RentalContextSqlServer(DbContextOptions<RentalContextSqlServer> options) : base(options)
+        {
+            Database.EnsureCreated();
+        }
+        
+        public RentalContextSqlServer()
+        {
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-P87PH2B;Initial Catalog=ApiDataBase;Integrated Security=true;");
+            // connection string for local db, not docker one
+            //optionsBuilder.UseSqlServer("Server=10.160.2.43,5000;Database=RentalCodeFirst;User Id=sa;Password=yrnn9&kDt-");
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-P87PH2B;Initial Catalog=ApiDatabase;Integrated Security=true;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
