@@ -81,3 +81,5 @@ Moving forward from recent project [Complete Code First Approach](https://github
 - To config swagger https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle
 - Docker image: https://hub.docker.com/repository/docker/1337322420/rest-api-docker-demo
 - In order to have 'HasName' fluent api properties it should be installed: Microsoft.EntityFrameworkCore.Relational
+- Migrations command: dotnet ef migrations add InitialMigration --project Api.Data --context RentalContextSqlServer
+- Database update: 
