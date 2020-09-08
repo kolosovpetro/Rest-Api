@@ -4,7 +4,7 @@
 
 Moving forward from recent project [Complete Code First Approach](https://github.com/kolosovpetro/Complete-CodeFirst-Approach), we create a `REST API` for movie/actors data with `CRUD` options. Includes `Docker` support for `PostgreSQL` and `MS SQL Server`. Implemented according to scheme below
 
-![DbSchema](/Schema/api_schema.jpg)
+![DbSchema](/Api.Schema/api_schema.jpg)
 
 ## Endpoints
 
