@@ -13,4 +13,9 @@
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Api.Data\Api.Data.csproj" />
+      <ProjectReference Include="..\Api.Repositories\Api.Repositories.csproj" />
+    </ItemGroup>
+
 </Project>
