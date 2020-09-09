@@ -1,6 +1,7 @@
 ﻿using Api.Data.Configurations;
 using Api.Models.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Api.Data.Context
 {
@@ -17,17 +18,20 @@ namespace Api.Data.Context
         {
             Database.EnsureCreated();
         }
-        
+
         public RentalContextSqlServer()
         {
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            // connection string for local db, not docker one
-            //optionsBuilder.UseSqlServer("Server=10.160.2.43,5000;Database=RentalCodeFirst;User Id=sa;Password=yrnn9&kDt-");
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-P87PH2B;Initial Catalog=ApiDatabase;Integrated Security=true;");
-        }
+        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        // {
+        //     // // docker ms sql server connection string
+        //     // optionsBuilder.UseSqlServer(
+        //     //     "Server=192.168.43.85,5000;Database=ApiDatabase;User Id=sa;Password=yrnn9&kDt-");
+        //
+        //
+        //     //optionsBuilder.UseSqlServer("Data Source=DESKTOP-P87PH2B;Initial Catalog=ApiDatabase;Integrated Security=true;");
+        // }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

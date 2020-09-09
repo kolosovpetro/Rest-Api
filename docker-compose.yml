@@ -1,34 +1,33 @@
 version: '3.4'
 
 networks:
-  postgresdockerapi-dev:
+  sqlserverdockerapi-dev:
     driver: bridge 
 
 services:
-  postgresdockerapi:
-    image: postgresdockerapi:latest
+  sqlserverdockerapi:
+    image: sqlserverdockerapi:latest
     depends_on:
-      - "postgres_image"
+      - "sqlserver_image"
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "8000:80"     
     environment:
-      DB_CONNECTION_STRING: "host=postgres_image;port=5432;database=RentalCodeFirst;username=postgres;password=postgres"
+      DB_CONNECTION_STRING: "Server=sqlserver_image;Database=RentalCodeFirst;User Id=sa;Password=yrnn9&kDt-;"
     networks:
-      - postgresdockerapi-dev  
+      - sqlserverdockerapi-dev  
   
-  postgres_image:
-    image: postgres:latest
-    ports:
-      - "5432"
-    restart: always
+  sqlserver_image:
+    image: mcr.microsoft.com/mssql/server:2017-CU8-ubuntu
     environment:
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "postgres"
-      POSTGRES_DB: "RentalCodeFirst"
+      SA_PASSWORD: "yrnn9&kDt-"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "5000:1433"
     networks:
-      - postgresdockerapi-dev
-volumes:
-  db_volume:
+      - sqlserverdockerapi-dev
+         
+    
+     

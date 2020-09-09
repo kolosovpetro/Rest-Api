@@ -27,13 +27,16 @@ namespace Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+            var environmentConnectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
 
             services.AddDbContext<RentalContextPostgreSql>(options =>
-                options.UseNpgsql(connectionString ?? Configuration.GetConnectionString("PostgresConnection")));
+                options.UseNpgsql(
+                    environmentConnectionString ??
+                    Configuration.GetConnectionString("LOCAL_POSTGRES_CONNECTION_STRING")));
 
             services.AddDbContext<RentalContextSqlServer>(options =>
-                options.UseSqlServer(connectionString ?? Configuration.GetConnectionString("SqlServerConnection")));
+                options.UseSqlServer(environmentConnectionString ??
+                                     Configuration.GetConnectionString("LOCAL_SQLSERVER_CONNECTION_STRING")));
 
             services.AddControllers();
             services.AddScoped<DbContext, RentalContextSqlServer>(); // override this to change db provider

@@ -42,7 +42,7 @@ Moving forward from recent project [Complete Code First Approach](https://github
   - `docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=yrnn9&kDt-' -p 5000:1433 --name sqlserverimage -d mcr.microsoft.com/mssql/server:2017-CU8-ubuntu`
   - Get your inner ip from `ipconfig`
   - `docker build -t movies --build-arg CONN_STR="Server=<inner_ip>,5000;Database=RentalCodeFirst;User Id=sa;Password=yrnn9&kDt-;" .`
-  - `docker run -d -p 9000:80 --name sqlserverdockerapi -e ConnectionStrings__DB_CONNECTION_STRING="Server=<inner_ip>,5000;Database=RentalCodeFirst;User Id=sa;Password=yrnn9&kDt-;" movies`
+  - `docker run -d -p 9000:80 --name sqlserverdockerapi -e ConnectionStrings__ENV_DB_CONNECTION_STRING="Server=<inner_ip>,5000;Database=RentalCodeFirst;User Id=sa;Password=yrnn9&kDt-;" movies`
   - Navigate to http://localhost:9000/swagger
   
 ## To improve
