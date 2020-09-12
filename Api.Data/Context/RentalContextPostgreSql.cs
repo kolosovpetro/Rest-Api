@@ -1,12 +1,10 @@
-﻿using System.Reflection;
-using Api.Data.Common.Interfaces;
-using Api.Data.Configurations;
+﻿using Api.Data.Configurations;
 using Api.Models.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api.Data.Context
 {
-    public sealed class RentalContextPostgreSql : DbContext, IDbEntities
+    public sealed class RentalContextPostgreSql : DbContext
     {
         public DbSet<Movies> Movies { get; set; }
         public DbSet<Copies> Copies { get; set; }
@@ -32,8 +30,13 @@ namespace Api.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Все то же что было но не нужно руками дописывать / прописывать каждую конфигурацию
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.ApplyConfiguration(new MoviesConfiguration());
+            modelBuilder.ApplyConfiguration(new CopiesConfiguration());
+            modelBuilder.ApplyConfiguration(new ActorsConfiguration());
+            modelBuilder.ApplyConfiguration(new StarringConfiguration());
+            modelBuilder.ApplyConfiguration(new RentalsConfiguration());
+            modelBuilder.ApplyConfiguration(new ClientsConfiguration());
+            modelBuilder.ApplyConfiguration(new EmployeesConfiguration());
         }
     }
 }

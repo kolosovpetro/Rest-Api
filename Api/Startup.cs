@@ -1,10 +1,8 @@
 using System;
-using Api.Data.Common.Extensions;
 using Api.Data.Context;
 using Api.Models.Models;
-using Api.Repositories.Extensions;
 using Api.Repositories.Interfaces;
-using Api.Services.Extensions;
+using Api.Repositories.Repositories;
 using Api.Services.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
@@ -29,23 +27,25 @@ namespace Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDataLayerWithSqlServer(Configuration);
-            //or
-            //services.AddDataLayerWithPostgreSql(Configuration);
-            
-            //useless
-            // ; // override this to change db provider
-            // services.AddScoped<RentalContextPostgreSql, RentalContextPostgreSql>();
-            // services.AddScoped<RentalContextSqlServer, RentalContextSqlServer>();
-            // services.AddScoped<RentalContextPostgreSql, RentalContextPostgreSql>();
-            
-            services.AddRepositories();
-            services.AddServices();
+            var environmentConnectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+
+            services.AddDbContext<RentalContextPostgreSql>(options =>
+                options.UseNpgsql(
+                    environmentConnectionString ??
+                    Configuration.GetConnectionString("LOCAL_POSTGRES_CONNECTION_STRING")));
+
+            services.AddDbContext<RentalContextSqlServer>(options =>
+                options.UseSqlServer(environmentConnectionString ??
+                                     Configuration.GetConnectionString("LOCAL_SQLSERVER_CONNECTION_STRING")));
+
             services.AddControllers();
-           
-            //Это стоило вынести в слой бизнес логики но его у тебя по сущего нет
+            services.AddScoped<DbContext, RentalContextSqlServer>(); // override this to change db provider
+            services.AddScoped<RentalContextPostgreSql, RentalContextPostgreSql>();
+            services.AddScoped<RentalContextSqlServer, RentalContextSqlServer>();
+            services.AddScoped<RentalContextPostgreSql, RentalContextPostgreSql>();
+            services.AddScoped<IRepository<Movies>, MoviesRepository>();
+            services.AddScoped<MoviesServices, MoviesServices>();
             services.AddAutoMapper(typeof(Startup));
-            
             services.AddControllers().AddNewtonsoftJson(e =>
             {
                 e.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
