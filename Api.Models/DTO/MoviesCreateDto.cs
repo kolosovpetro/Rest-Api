@@ -2,6 +2,8 @@
 
 namespace Api.Models.DTO
 {
+    //Используй конфигурации сущностей для валидации вместо дто
+    //Твоя дто должна быть чистой
     public class MoviesCreateDto
     {
         [Required]

@@ -23,7 +23,12 @@ namespace Api.Repositories.Base
         public void Add(T entity) => _dbSet.Add(entity);
         
         public void Delete(T entity) => _dbSet.Remove(entity);
-        
+
+        public async Task SaveChangesAsync()
+        {
+            await _rentalContext.SaveChangesAsync();
+        }
+
         public T GetById(int id) => _dbSet.Find(id);
 
         public async Task<T> GetByIdAsync(int id) => await _dbSet.FindAsync(id);

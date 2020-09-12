@@ -1,11 +1,13 @@
-﻿using Api.Data.Configurations;
+﻿using System.Reflection;
+using Api.Data.Common.Interfaces;
+using Api.Data.Configurations;
 using Api.Models.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace Api.Data.Context
 {
-    public sealed class RentalContextSqlServer : DbContext
+    public sealed class RentalContextSqlServer : DbContext, IDbEntities
     {
         public DbSet<Movies> Movies { get; set; }
         public DbSet<Copies> Copies { get; set; }
@@ -16,6 +18,8 @@ namespace Api.Data.Context
 
         public RentalContextSqlServer(DbContextOptions<RentalContextSqlServer> options) : base(options)
         {
+            //С этим твоя база будет каждый раз очищаться
+            //Скорее всего это для проверки работы но не забудь это исправить
             Database.EnsureCreated();
         }
 
@@ -35,13 +39,8 @@ namespace Api.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new MoviesConfiguration());
-            modelBuilder.ApplyConfiguration(new CopiesConfiguration());
-            modelBuilder.ApplyConfiguration(new ActorsConfiguration());
-            modelBuilder.ApplyConfiguration(new StarringConfiguration());
-            modelBuilder.ApplyConfiguration(new RentalsConfiguration());
-            modelBuilder.ApplyConfiguration(new ClientsConfiguration());
-            modelBuilder.ApplyConfiguration(new EmployeesConfiguration());
+            //Все то же что было но не нужно руками дописывать / прописывать каждую конфигурацию
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }
