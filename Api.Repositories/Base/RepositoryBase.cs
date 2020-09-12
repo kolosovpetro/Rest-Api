@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Api.Repositories.Base
 {
-    public abstract class RepositoryBase<T> : IRepository<T> where T : class
+    public class RepositoryBase<T> : IRepository<T> where T : class
     {
         private readonly DbContext _rentalContext;
         private readonly DbSet<T> _dbSet;
 
 
-        protected RepositoryBase(DbContext rentalContext)
+        public RepositoryBase(DbContext rentalContext)
         {
             _rentalContext = rentalContext;
             _dbSet = _rentalContext.Set<T>();
