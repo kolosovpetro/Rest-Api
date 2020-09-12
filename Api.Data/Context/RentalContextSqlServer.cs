@@ -1,9 +1,7 @@
 ﻿using System.Reflection;
 using Api.Data.Common.Interfaces;
-using Api.Data.Configurations;
 using Api.Models.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace Api.Data.Context
 {
