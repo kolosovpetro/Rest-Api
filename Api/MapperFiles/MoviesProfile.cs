@@ -11,8 +11,8 @@ namespace Api.MapperFiles
             // source -> target
             CreateMap<Movies, MoviesReadDto>();
             CreateMap<MoviesCreateDto, Movies>();
-            CreateMap<MovieUpdateDto, Movies>();
-            CreateMap<Movies, MovieUpdateDto>();
+            CreateMap<MovieUpdateDto, Movies>().ReverseMap();
+                
         }
     }
 }
