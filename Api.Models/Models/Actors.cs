@@ -10,7 +10,6 @@ namespace Api.Models.Models
         public string Lastname { get; set; }
         public DateTime? Birthday { get; set; }
 
-        //Эти конструкторы нужны только для генерирования фальшивых данных, избавься от них и от самих данных
         public Actors()
         {
         }

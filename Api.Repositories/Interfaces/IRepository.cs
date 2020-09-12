@@ -12,7 +12,6 @@ namespace Api.Repositories.Interfaces
         void Delete(T entity);
         void Delete(Expression<Func<T, bool>> where);
         bool SaveChanges();
-        Task SaveChangesAsync();
         T GetById(int id);
         T Get(Expression<Func<T, bool>> where);
         Task<T> GetByIdAsync(int id);
