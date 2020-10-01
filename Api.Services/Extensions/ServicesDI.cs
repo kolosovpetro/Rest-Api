@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Api.Services.Extensions
 {
-    public static class ServicesDI
+    public static class ServicesDi
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {

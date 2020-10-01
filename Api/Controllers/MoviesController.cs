@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Api.Models.DTO;
 using Api.Services.Services;
-using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
@@ -61,28 +60,6 @@ namespace Api.Controllers
 
             return NoContent();
         }
-
-        // PATCH api/movies/{id}
-        //Не очень понял для чего этот метод поэтому не менял ничего
-        //Думаю сам справишься на основе примеров выше
-        // [HttpPatch("{id}")]
-        // public async Task<IActionResult> PartialMovieUpdate(int id, JsonPatchDocument<MovieUpdateDto> patchDocument)
-        // {
-        //     var movieModel = await _moviesService.GetByIdAsync(id);
-        //     if (movieModel == null)
-        //         return NotFound();
-        //
-        //     var movieToPatch = _moviesService.ModelMapToUpdateDto(movieModel);
-        //     patchDocument.ApplyTo(movieToPatch, ModelState);
-        //
-        //     if (!TryValidateModel(movieToPatch))
-        //         return ValidationProblem(ModelState);
-        //
-        //     _moviesService.UpdateDtoMapToModel(movieToPatch, movieModel);
-        //     _moviesService.DatabaseUpdate(movieModel);
-        //     _moviesService.DatabaseSaveChanges();
-        //     return NoContent();
-        // }
 
         // DELETE api/movies/{id}
         [HttpDelete("{id}")]

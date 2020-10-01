@@ -33,27 +33,19 @@ namespace Api.Services.Services
             return _mapper.Map<MoviesReadDto>(model);
         }
 
-        public void DatabaseSaveChanges()
+        private void DatabaseSaveChanges()
         {
             _moviesRepository.SaveChanges();
         }
 
-        public void Add(Movies model)
-        {
-            _moviesRepository.Add(model);
-        }
         public async Task AddAndSaveAsync(MoviesCreateDto model)
         {
             var movie = _mapper.Map<Movies>(model);
             _moviesRepository.Add(movie);
             await _moviesRepository.SaveChangesAsync();
         }
-        private void DatabaseUpdate(Movies movieModel)
-        {
-            _moviesRepository.Update(movieModel);
-        }
 
-        public async Task Update(int id, MovieUpdateDto dto)
+        private async Task Update(int id, MovieUpdateDto dto)
         {
             var movie = await _moviesRepository.GetByIdAsync(id);
             //Хорошим решением будет сделать свои ексепшины и их возвращать
@@ -73,7 +65,7 @@ namespace Api.Services.Services
             DatabaseSaveChanges();
         }
 
-        public async Task Delete(int id)
+        private async Task Delete(int id)
         {
             var movie = await _moviesRepository.GetByIdAsync(id);
             //Хорошим решением будет сделать свои ексепшины и их возвращать
