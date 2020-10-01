@@ -54,7 +54,7 @@ namespace Api.Controllers
             {
                 await _moviesService.UpdateAndSaveAsync(id, movieUpdateDto);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return NotFound();
             }
@@ -92,7 +92,7 @@ namespace Api.Controllers
             {
                 await _moviesService.DeleteAndSaveAsync(id);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return NotFound();
             }

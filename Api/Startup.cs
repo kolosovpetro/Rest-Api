@@ -32,13 +32,7 @@ namespace Api
             services.AddDataLayerWithSqlServer(Configuration);
             //or
             //services.AddDataLayerWithPostgreSql(Configuration);
-            
-            //useless
-            // ; // override this to change db provider
-            // services.AddScoped<RentalContextPostgreSql, RentalContextPostgreSql>();
-            // services.AddScoped<RentalContextSqlServer, RentalContextSqlServer>();
-            // services.AddScoped<RentalContextPostgreSql, RentalContextPostgreSql>();
-            
+
             services.AddRepositories();
             services.AddServices();
             services.AddControllers();
