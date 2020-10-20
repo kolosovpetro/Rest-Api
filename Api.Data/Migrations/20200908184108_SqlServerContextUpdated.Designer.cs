@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Api.Data.Migrations
 {
-    [DbContext(typeof(RentalContextSqlServer))]
+    [DbContext(typeof(SqlServerContext))]
     [Migration("20200908184108_SqlServerContextUpdated")]
     partial class SqlServerContextUpdated
     {

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Api.Data.Migrations
 {
-    [DbContext(typeof(RentalContextSqlServer))]
+    [DbContext(typeof(SqlServerContext))]
     partial class RentalContextSqlServerModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

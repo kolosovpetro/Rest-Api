@@ -13,10 +13,10 @@ namespace Api.Data.Common.Extensions
         {
             var environmentConnectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
 
-            services.AddDbContext<RentalContextSqlServer>(options =>
+            services.AddDbContext<SqlServerContext>(options =>
                 options.UseSqlServer(environmentConnectionString ??
                                      configuration.GetConnectionString("LOCAL_SQLSERVER_CONNECTION_STRING")));
-            services.AddScoped<DbContext, RentalContextSqlServer>();
+            services.AddTransient<DbContext, SqlServerContext>();
             return services;
         }
     }

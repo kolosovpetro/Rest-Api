@@ -12,13 +12,13 @@ namespace Api.Data.Common.Extensions
             IConfiguration configuration)
         {
             var environmentConnectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
-            
-            services.AddDbContext<RentalContextPostgreSql>(options =>
+
+            services.AddDbContext<PostgreContext>(options =>
                 options.UseNpgsql(
                     environmentConnectionString ??
                     configuration.GetConnectionString("LOCAL_POSTGRES_CONNECTION_STRING")));
-            
-            services.AddScoped<DbContext, RentalContextPostgreSql>();
+
+            services.AddTransient<DbContext, PostgreContext>();
             return services;
         }
     }
