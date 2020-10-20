@@ -1,15 +1,9 @@
-using System;
 using Api.Data.Common.Extensions;
-using Api.Data.Context;
-using Api.Models.Models;
 using Api.Repositories.Extensions;
-using Api.Repositories.Interfaces;
 using Api.Services.Extensions;
-using Api.Services.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

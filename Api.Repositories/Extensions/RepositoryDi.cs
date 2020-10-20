@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Api.Repositories.Extensions
 {
-    public static class RepositoriesDI
+    public static class RepositoryDi
     {
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {

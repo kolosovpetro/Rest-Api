@@ -23,7 +23,6 @@ namespace Api.Services.Services
         public async Task<IEnumerable<MoviesReadDto>> GetAllMoviesAsync()
         {
             var movies = await _moviesRepository.GetAllAsync();
-
             return _mapper.Map<IEnumerable<MoviesReadDto>>(movies);
         }
         

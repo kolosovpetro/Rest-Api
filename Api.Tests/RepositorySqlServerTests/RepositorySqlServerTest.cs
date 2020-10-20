@@ -1,8 +1,4 @@
-﻿using System.Linq;
-using Api.Data.Context;
-
-using FluentAssertions;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Api.Tests.RepositorySqlServerTests
 {
