@@ -8,7 +8,7 @@ namespace Api.Repositories.Extensions
     {
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
-            return services.AddScoped(typeof(IRepository<>), typeof(RepositoryBase<>));
+            return services.AddTransient(typeof(IRepository<>), typeof(RepositoryBase<>));
         }
     }
 }

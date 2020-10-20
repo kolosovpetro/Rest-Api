@@ -8,7 +8,7 @@ namespace Api.Services.Extensions
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             //Сделай для сервиса интерфейс и передавай его
-            return services.AddScoped<MoviesService, MoviesService>();
+            return services.AddTransient<MoviesService, MoviesService>();
         }
     }
 }
