@@ -23,11 +23,11 @@ namespace Api.Data.Context
             Database.EnsureCreated();
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseNpgsql(
-                "Server=localhost;User Id=postgres;Password=postgres;Database=ApiDatabase;");
-        }
+        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        // {
+        //     optionsBuilder.UseNpgsql(
+        //         "Server=localhost;User Id=postgres;Password=postgres;Database=ApiDatabase;");
+        // }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
