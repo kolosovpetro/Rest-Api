@@ -23,11 +23,11 @@ namespace Api.Data.Context
         {
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseNpgsql(
-                "Server=localhost;User Id=postgres;Password=postgres;Database=MoviesApi;");
-        }
+        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        // {
+        //     optionsBuilder.UseNpgsql(
+        //         "Server=localhost;User Id=postgres;Password=postgres;Database=MoviesApi;");
+        // }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
