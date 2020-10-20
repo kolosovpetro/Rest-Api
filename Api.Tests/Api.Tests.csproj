@@ -16,10 +16,10 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Api.Core\Api.Core.csproj" />
       <ProjectReference Include="..\Api.Data\Api.Data.csproj" />
       <ProjectReference Include="..\Api.Repositories\Api.Repositories.csproj" />
       <ProjectReference Include="..\Api.Services\Api.Services.csproj" />
-      <ProjectReference Include="..\Api\Api.csproj" />
     </ItemGroup>
 
 </Project>

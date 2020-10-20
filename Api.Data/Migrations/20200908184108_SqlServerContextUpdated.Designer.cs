@@ -21,7 +21,7 @@ namespace Api.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0-preview.8.20407.4");
 
-            modelBuilder.Entity("Api.Models.Models.Actors", b =>
+            modelBuilder.Entity("Api.Core.Models.Models.Actors", b =>
                 {
                     b.Property<int>("ActorId")
                         .ValueGeneratedOnAdd()
@@ -245,7 +245,7 @@ namespace Api.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Api.Models.Models.Clients", b =>
+            modelBuilder.Entity("Api.Core.Models.Models.Clients", b =>
                 {
                     b.Property<int>("ClientId")
                         .ValueGeneratedOnAdd()
@@ -315,7 +315,7 @@ namespace Api.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Api.Models.Models.Copies", b =>
+            modelBuilder.Entity("Api.Core.Models.Models.Copies", b =>
                 {
                     b.Property<int>("CopyId")
                         .ValueGeneratedOnAdd()
@@ -461,7 +461,7 @@ namespace Api.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Api.Models.Models.Employees", b =>
+            modelBuilder.Entity("Api.Core.Models.Models.Employees", b =>
                 {
                     b.Property<int>("EmployeeId")
                         .ValueGeneratedOnAdd()
@@ -534,7 +534,7 @@ namespace Api.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Api.Models.Models.Movies", b =>
+            modelBuilder.Entity("Api.Core.Models.Models.Movies", b =>
                 {
                     b.Property<int>("MovieId")
                         .ValueGeneratedOnAdd()
@@ -646,7 +646,7 @@ namespace Api.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Api.Models.Models.Rentals", b =>
+            modelBuilder.Entity("Api.Core.Models.Models.Rentals", b =>
                 {
                     b.Property<int>("ClientId")
                         .HasColumnType("int")
@@ -772,7 +772,7 @@ namespace Api.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Api.Models.Models.Starring", b =>
+            modelBuilder.Entity("Api.Core.Models.Models.Starring", b =>
                 {
                     b.Property<int>("ActorId")
                         .HasColumnType("int")
@@ -946,39 +946,39 @@ namespace Api.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Api.Models.Models.Copies", b =>
+            modelBuilder.Entity("Api.Core.Models.Models.Copies", b =>
                 {
-                    b.HasOne("Api.Models.Models.Movies", "Movie")
+                    b.HasOne("Api.Core.Models.Models.Movies", "Movie")
                         .WithMany("Copies")
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Api.Models.Models.Rentals", b =>
+            modelBuilder.Entity("Api.Core.Models.Models.Rentals", b =>
                 {
-                    b.HasOne("Api.Models.Models.Clients", "Client")
+                    b.HasOne("Api.Core.Models.Models.Clients", "Client")
                         .WithMany("Rentals")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Api.Models.Models.Copies", "Copy")
+                    b.HasOne("Api.Core.Models.Models.Copies", "Copy")
                         .WithMany("Rentals")
                         .HasForeignKey("CopyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Api.Models.Models.Starring", b =>
+            modelBuilder.Entity("Api.Core.Models.Models.Starring", b =>
                 {
-                    b.HasOne("Api.Models.Models.Actors", "Actor")
+                    b.HasOne("Api.Core.Models.Models.Actors", "Actor")
                         .WithMany("Starring")
                         .HasForeignKey("ActorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Api.Models.Models.Movies", "Movie")
+                    b.HasOne("Api.Core.Models.Models.Movies", "Movie")
                         .WithMany("Starring")
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
