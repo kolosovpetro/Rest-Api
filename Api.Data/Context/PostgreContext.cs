@@ -14,20 +14,20 @@ namespace Api.Data.Context
         public DbSet<Rentals> Rentals { get; set; }
         public DbSet<Employees> Employees { get; set; }
 
-        public PostgreContext(DbContextOptions<PostgreContext> options) : base(options)
-        {
-            Database.EnsureCreated();
-        }
+        // public PostgreContext(DbContextOptions<PostgreContext> options) : base(options)
+        // {
+        //     Database.EnsureCreated();
+        // }
 
         public PostgreContext()
         {
         }
 
-        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        // {
-        //     optionsBuilder.UseNpgsql(
-        //         "Server=localhost;User Id=postgres;Password=postgres;Database=MoviesApi;");
-        // }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseNpgsql(
+                "Server=localhost;User Id=postgres;Password=postgres;Database=MoviesApi;");
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
