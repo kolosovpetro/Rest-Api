@@ -11,7 +11,7 @@ namespace Api.Data.Common.Extensions
         public static IServiceCollection AddDataLayerWithPostgreSql(this IServiceCollection services,
             IConfiguration configuration)
         {
-            var environmentConnectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+            var environmentConnectionString = Environment.GetEnvironmentVariable("HEROKU_POSTRE_CONNECTION_STRING");
 
             services.AddDbContext<PostgreContext>(options =>
                 options.UseNpgsql(
