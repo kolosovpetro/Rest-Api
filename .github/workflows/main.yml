@@ -21,5 +21,5 @@ jobs:
     - name: Release
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        HEROKU_POSTRE_CONNECTION_STRING: ${{ "secrets.HEROKU_POSTRE_CONNECTION_STRING" }}
+        HEROKU_POSTRE_CONNECTION_STRING: ${{ secrets.HEROKU_POSTGRE_CONNECTION_STRING }}
       run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web 
