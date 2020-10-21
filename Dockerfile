@@ -24,4 +24,4 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 # ENTRYPOINT ["dotnet", "Api.Core.dll"]
-CMD ASPNETCORE_URLS=0.0.0.0:443 dotnet Api.Core.dll
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet Api.Core.dll
