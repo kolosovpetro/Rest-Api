@@ -9,6 +9,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Api.Auxiliaries\Api.Auxiliaries.csproj" />
       <ProjectReference Include="..\Api.Models\Api.Models.csproj" />
     </ItemGroup>
 
