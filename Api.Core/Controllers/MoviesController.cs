@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Api.Models.DTO;
 using Api.Services.Services;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Api.Controllers
 {
@@ -17,15 +18,22 @@ namespace Api.Controllers
             _moviesService = moviesService;
         }
 
-        // GET api/movies
+        /// <summary>
+        /// Returns list of all the movies in database.
+        /// </summary>
+        [HttpGet]
+        [SwaggerOperation(Summary = "Returns list of all the movies in database.")]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _moviesService.GetAllMoviesAsync());
         }
 
-        // GET api/movies/{id}
+        /// <summary>
+        /// Returns movie by Id.
+        /// </summary>
         [HttpGet("{id}", Name = "GetMovieById")]
+        [SwaggerOperation(Summary = "Returns movie by Id.")]
         public async Task<IActionResult> GetMovieById(int id)
         {
             var model = await _moviesService.GetByIdAsync(id);
@@ -36,7 +44,11 @@ namespace Api.Controllers
             return Ok(model);
         }
 
-        // POST api/movies
+        /// <summary>
+        /// Adds new movie to database.
+        /// </summary>
+        [HttpPost]
+        [SwaggerOperation(Summary = "Adds new movie to database.")]
         [HttpPost]
         public async Task<IActionResult> CreateMovies(MoviesCreateDto moviesCreateDto)
         {
@@ -45,8 +57,11 @@ namespace Api.Controllers
             return NoContent();
         }
 
-        // PUT api/movies/{id}
+        /// <summary>
+        /// Modifies an existing movie in database.
+        /// </summary>
         [HttpPut("{id}")]
+        [SwaggerOperation(Summary = "Modifies an existing movie in database.")]
         public async Task<IActionResult> UpdateMovie(int id, MovieUpdateDto movieUpdateDto)
         {
             try
@@ -61,8 +76,11 @@ namespace Api.Controllers
             return NoContent();
         }
 
-        // DELETE api/movies/{id}
-        [HttpDelete("{id}")]
+        /// <summary>
+        /// Deletes movie from database by Id. Returns response.
+        /// </summary>
+        [HttpDelete]
+        [SwaggerOperation(Summary = "Deletes movie from database by Id.")]
         public async Task<IActionResult> DeleteMovie(int id)
         {
             try
