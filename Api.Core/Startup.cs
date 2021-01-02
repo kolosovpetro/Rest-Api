@@ -31,6 +31,9 @@ namespace Api
             services.AddRepositories();
             services.AddServices();
             services.AddControllers();
+            
+            // allows to connect from front end to api
+            services.AddCors();
            
             //Это стоило вынести в слой бизнес логики но его у тебя по сущего нет
             services.AddAutoMapper(typeof(Startup));
@@ -62,6 +65,15 @@ namespace Api
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"); });
 
             app.UseAuthorization();
+            
+            // allows to connect from front end to api
+            app.UseCors(builder =>
+            {
+                builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            });
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
